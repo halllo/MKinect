@@ -1,0 +1,83 @@
+﻿<Window x:Class="GestureRun.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:gesture="clr-namespace:MKinectUIExtensions.Trackers;assembly=MKinectUIExtensions"
+        xmlns:hcanvas="clr-namespace:MKinectUIExtensions.Trackers.HighlightCanvas;assembly=MKinectUIExtensions"
+        Title="Gesture Tester" Height="800" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TabControl Grid.Row="1" x:Name="tabs">
+            <TabItem Header="simple log">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="waiting for kinect..." x:Name="status" />
+
+                    <TextBlock Grid.Column="0" Grid.Row="1" Text="left hand" FontWeight="Bold" />
+                    <gesture:MovementTrackerListBox Grid.Row="2" Grid.Column="0" x:Name="tracker_lefthand" HorizontalContentAlignment="Stretch" />
+
+                    <TextBlock Grid.Column="1" Grid.Row="1" Text="hand spring" FontWeight="Bold" />
+                    <gesture:SpringTrackerListBox Grid.Row="2" Grid.Column="1" x:Name="tracker_handspring" HorizontalContentAlignment="Stretch" />
+
+                    <TextBlock Grid.Column="2" Grid.Row="1" Text="right hand" FontWeight="Bold" />
+                    <gesture:MovementTrackerListBox Grid.Row="2" Grid.Column="2" x:Name="tracker_righthand" HorizontalContentAlignment="Stretch" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="sizeable square">
+                <Grid>
+                    <gesture:DistanceTrackerTextBlock x:Name="tracker_distance" />
+                    <gesture:SizeableBorder x:Name="tracker_sizeablesquare"></gesture:SizeableBorder>
+                </Grid>
+            </TabItem>
+            <TabItem Header="rolling dice">
+                <Grid>
+                    <Viewport3D Grid.Row="1" ClipToBounds="True">
+                        <Viewport3D.Camera>
+                            <PerspectiveCamera 
+                                FarPlaneDistance="100"
+	                            LookDirection="0,0,-10"
+	                            UpDirection="0,1,0"
+	                            NearPlaneDistance="1" 
+	                            Position="0,0,10" 
+	                            FieldOfView="70" />
+                        </Viewport3D.Camera>
+                        <ModelVisual3D>
+                            <ModelVisual3D.Content>
+                                <DirectionalLight Color="White" Direction="0,0,-10" />
+                            </ModelVisual3D.Content>
+                        </ModelVisual3D>
+                        <gesture:RollingDice x:Name="tracker_rollingdice"/>
+                    </Viewport3D>
+                </Grid>
+            </TabItem>
+            <TabItem Header="mouse like">
+                <Grid>
+                    <hcanvas:TrackingEllipseCanvas x:Name="tracker_canvas">
+
+                        <Rectangle Width="200" Height="100" Canvas.Left="84" Canvas.Top="200" Fill="{Binding RectColor1}"
+                                   hcanvas:HighlightCanvasItemContext.Handler="{Binding LeftColorBox}"
+                                   />
+
+                        <Rectangle Width="200" Height="100" Canvas.Left="490" Canvas.Top="200" Fill="{Binding RectColor2}"
+                                   hcanvas:HighlightCanvasItemContext.Handler="{Binding RightColorBox}"
+                                   />
+                        
+                    </hcanvas:TrackingEllipseCanvas>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+
+</Window>

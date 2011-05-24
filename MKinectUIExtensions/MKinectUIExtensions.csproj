@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CDF9E5AC-D280-4BD3-A40F-47F08B5A283D}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MKinectUIExtensions</RootNamespace>
+    <AssemblyName>MKinectUIExtensions</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EventAggregator.cs" />
+    <Compile Include="Fluent\When.cs" />
+    <Compile Include="Fluent\WhenAction.cs" />
+    <Compile Include="Fluent\WhenCondition.cs" />
+    <Compile Include="Helper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Trackers\DispatchableListBox.cs" />
+    <Compile Include="Trackers\DistanceTrackerTextBlock.cs" />
+    <Compile Include="Trackers\HighlightCanvas\CenterAwareCanvas.cs" />
+    <Compile Include="Trackers\HighlightCanvas\HighlightCanvas.cs" />
+    <Compile Include="Trackers\HighlightCanvas\HighlightCanvasHighlight.cs" />
+    <Compile Include="Trackers\HighlightCanvas\HighlightCanvasItemContext.cs" />
+    <Compile Include="Trackers\HighlightCanvas\HighlightCanvasItemContextHandlers.cs" />
+    <Compile Include="Trackers\HighlightCanvas\Viewport\INotifySizeChange.cs" />
+    <Compile Include="Trackers\HighlightCanvas\TrackingEllipse.cs" />
+    <Compile Include="Trackers\HighlightCanvas\TrackingEllipseCanvas.cs" />
+    <Compile Include="Trackers\HighlightCanvas\ViewportedHighlightCanvas.cs" />
+    <Compile Include="Trackers\HighlightCanvas\Viewport\Remembering.cs" />
+    <Compile Include="Trackers\HighlightCanvas\Viewport\TrackingUIViewport.cs" />
+    <Compile Include="Trackers\HighlightCanvas\Viewport\TrackingWindow.cs" />
+    <Compile Include="Trackers\HighlightCanvas\Viewport\ViewportPointConverter.cs" />
+    <Compile Include="Trackers\MovementTrackerListBox.cs" />
+    <Compile Include="Trackers\Pointer.cs" />
+    <Compile Include="Trackers\RollingDice.cs" />
+    <Compile Include="Trackers\SizeableBorder.cs" />
+    <Compile Include="Trackers\SpringTrackerListBox.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MKinect\MKinect.csproj">
+      <Project>{A61E57CE-109A-4A7A-A949-A76BBBB311EB}</Project>
+      <Name>MKinect</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

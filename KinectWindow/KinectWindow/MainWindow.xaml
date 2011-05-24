@@ -1,0 +1,21 @@
+﻿<Window x:Class="KinectWindow.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:hc="clr-namespace:MKinectUIExtensions.Trackers.HighlightCanvas;assembly=MKinectUIExtensions"
+        Title="Hand Control" Height="461" Width="670">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" x:Name="statusbox" Text="waiting for kinect..."/>
+        <hc:TrackingEllipseCanvas Grid.Row="1" x:Name="trackingcanvas">
+            <Rectangle Canvas.Left="109" Canvas.Top="126" Width="150" Height="150"
+                       Fill="{Binding Brush1}"
+                       hc:HighlightCanvasItemContext.Handler="{Binding LeftKinectBox}" />
+            <Rectangle Canvas.Left="378" Canvas.Top="126" Width="150" Height="150"
+                       Fill="{Binding Brush2}"
+                       hc:HighlightCanvasItemContext.Handler="{Binding LeftKinectBox}" />
+        </hc:TrackingEllipseCanvas>
+    </Grid>
+</Window>
